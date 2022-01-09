@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const mongoose = require("mongoose");
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers/index");
-const { DB_CONNECTION_STRING } = require("./config");
+const { DB_CONNECTION_STRING_LIVE } = require("./config");
 
 const LOCAL_PORT = 5000;
 const PORT = process.env.PORT || LOCAL_PORT;
@@ -12,7 +12,7 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req }),
 });
 mongoose
-  .connect(DB_CONNECTION_STRING, {
+  .connect(DB_CONNECTION_STRING_LIVE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
